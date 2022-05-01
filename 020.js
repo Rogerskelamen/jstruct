@@ -25,7 +25,6 @@ var isValid = function(s) {
       // 如果最后两个匹配成功，则删除两个
       store.pop()
       store.pop()
-      // store = store.slice(0, store.length - 3)
     }
   }
 

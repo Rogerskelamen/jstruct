@@ -10,6 +10,23 @@
 
 //必须 原地 修改，只允许使用额外常数空间。
 
+/**
+ * @description 升序排列数组特定区间
+ * @param {number} start
+ * @param {number} end
+ */
+Array.prototype.cmp = function(start, end) {
+  var turns = end - start
+  for (let i = 0; i < turns; i++) { // 执行这么多轮
+    for (let j = start; j < end - i; j++) {
+      if (this[j] > this[j + 1]) {
+        var temp = this[j + 1]
+        this[j + 1] = this[j]
+        this[j] = temp
+      }
+    }
+  }
+}
 
 /**
  * @param {number[]} nums
@@ -21,23 +38,29 @@ var nextPermutation = function(nums) {
     return
   }
 
-  let j = nums.length - 1
-  let i = nums.length - 2
-  // 找出生序开始的地方
-  while (nums[i] > nums[j]) {
+  let j = nums.length - 1 // j指向最后一个元素
+  let i = nums.length - 2 // i指向倒数第二个元素
+  // 找出升序开始的地方
+  while (nums[i] >= nums[j]) {
+    if (i === 0 && nums[i] >= nums[j]) {
+      // 如果整个数组都是降序的，直接返回一整个升序的数组
+      nums.sort((a, b) => a - b)
+      console.log(nums)
+      return
+    }
     i--
     j--
-    if (i === 0 && nums[i] > nums[j]) {
-      // 如果真个数组都是降序的，直接返回一个整个生序的数组
-      nums = nums.sort((a, b) => a - b)
-      return nums
-    }
   }
 
-  // j从后向前找到第一个大于nums[i]的元素
+  // k从后向前找到第一个大于nums[i]的元素
   let k = nums.length - 1
-  while (nums[i] > nums[k]) {
+  while (nums[i] >= nums[k]) {
     k--
+  }
+
+  if (k === -1) {
+    console.log(nums)
+    return
   }
 
   // 交换k和i位置的元素
@@ -45,12 +68,13 @@ var nextPermutation = function(nums) {
   nums[i] = nums[k]
   nums[k] = temp
 
-  nums = nums.slice(0, i + 1).concat(nums.slice(i + 1, nums.length).sort((a, b) => a - b))
-  return nums
+  // 将i之后的所有元素升序排列
+  nums.cmp(i + 1, nums.length - 1)
+  console.log(nums)
 };
 
 /**
  * Test below
  * 下面是测试代码
  */
-console.log(nextPermutation([1,3,2]));
+nextPermutation([1,1])

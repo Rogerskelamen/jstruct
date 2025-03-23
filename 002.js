@@ -33,9 +33,10 @@ function createListNode(arr) {
  */
 function displayListNode(listNode) {
   while (listNode) {
-    console.log(listNode.val)
+    process.stdout.write(listNode.val + " -> ")
     listNode = listNode.next
   }
+  process.stdout.write("null\n")
 }
 
 // 通过序号查找一个节点的值(序号从1开始)

@@ -155,9 +155,9 @@ var addTwoNumbers = function(l1, l2) {
  * Test below
  * 下面是测试代码
  */
-var listNode = createListNode([1, 4, 3])
+let listNode = createListNode([1, 4, 3])
 // console.log(findNode(listNode, 0));
-// var newListNode = deleteNodeByIndex(listNode, 4, 5)
-var newListNode = insertNodeByIndex(listNode, 4, 5)
+// let newListNode = deleteNodeByIndex(listNode, 4, 5)
+let newListNode = insertNodeByIndex(listNode, 4, 5)
 displayListNode(newListNode)
 

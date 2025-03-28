@@ -35,6 +35,3 @@ var addStrings = function(num1, num2) {
  * 下面是测试代码
  */
 console.log(addStrings("584", "18"))
-// if (NaN) {
-//   console.log("hello")
-// }

@@ -26,7 +26,7 @@ var addStrings = function(num1, num2) {
 
   if (carry) ret.unshift(1)
 
-  return ret.join("")
+  return ret.join('')
 };
 
 

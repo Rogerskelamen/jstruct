@@ -7,17 +7,15 @@
  * @return {number}
  */
 var climbStairs = function(n) {
-  if (n === 1) {
-    return 1
-  }
-  var first = 1
-  var second = 2
-  for (var i = 3; i <= n; i++) {
-    var third = first + second
+  if (n < 2) return 1
+
+  let first = 1, second = 1, third = 2
+  while (n-- > 2) {
     first = second
     second = third
+    third = first + second
   }
-  return second
+  return third
 };
 
 /**

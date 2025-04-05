@@ -20,6 +20,7 @@ var deleteAndEarn = function(nums) {
     sum[num] += num
   }
 
+  // 转变为Q198
   let dp = [0]
 
   for (let i = 1; i < sum.length; i++) {

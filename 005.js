@@ -13,14 +13,14 @@ var longestPalindrome = function(s) {
     return s
   }
 
-  var maxLen = 1
-  var begin = 0
+  let maxLen = 1
+  let begin = 0
 
-  var dp = []
+  let dp = []
   // 初始化这个数组
-  for (var i = 0; i < s.length; i++) {
-    var subarr = []
-    for (var j = 0; j < s.length; j++) {
+  for (let i = 0; i < s.length; i++) {
+    let subarr = []
+    for (let j = 0; j < s.length; j++) {
       if (i === j) {
         subarr.push(true)
       } else {
@@ -31,7 +31,7 @@ var longestPalindrome = function(s) {
   }
 
   // 开始填表
-  for (var j = 1; j < s.length; j++) {
+  for (let j = 1; j < s.length; j++) {
     for (let i = 0; i < j; i++) {
       if (s[i] !== s[j]) {
         dp[i][j] = false

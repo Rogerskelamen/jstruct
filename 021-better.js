@@ -13,46 +13,40 @@
  * @return {ListNode}
  */
 var mergeTwoLists = function(list1, list2) {
-  if (!list1 && !list2) return null
-
+  // 首先创建一个新的链表
   let head = new ListNode()
-  if (!list1) {
-    head = list2
-    list2 = list2.next
-  }else if (!list2) {
-    head = list1
-    list1 = list1.next
-  }else {
-    if (list1.val < list2.val) {
-      head = list1
-      list1 = list1.next
-    }else {
-      head = list2
-      list2 = list2.next
-    }
-  }
+  let tail = head
 
-  let s = head
-
+  // 如果两个链表有一个没有遍历完
   while (list1 || list2) {
-    if (!list1) {
-      s.next = list2
-      list2 = list2.next
-    }
-    else if (!list2) {
-      s.next = list1
-      list1 = list1.next
-    } else {
-      if (list1.val < list2.val) {
-        s.next = list1
+    if (list1 && list2) {
+      if (list1.val <= list2.val) {
+        tail.next = list1
         list1 = list1.next
-      }else {
-        s.next = list2
+      } else {
+        tail.next = list2
+        list2 = list2.next
+      }
+    } else {
+      if (!list2) {
+        tail.next = list1
+        list1 = list1.next
+      } else {
+        tail.next = list2
         list2 = list2.next
       }
     }
-    s = s.next
+    tail = tail.next
   }
 
-  return head
+  return head.next
 };
+
+/**
+ * Test below
+ * 下面是测试代码
+ */
+let list1 = createListNode([0])
+let list2 = createListNode([0])
+let list = mergeTwoLists(list1, list2)
+displayListNode(list)

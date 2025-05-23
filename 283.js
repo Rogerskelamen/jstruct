@@ -32,4 +32,4 @@ var moveZeroes = function(nums) {
  * Test below
  * 下面是测试代码
  */
-moveZeroes([1, 0])
+moveZeroes([0,1,0,3,12])

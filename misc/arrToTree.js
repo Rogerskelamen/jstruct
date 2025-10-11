@@ -3,7 +3,7 @@
  * @return {object}
  */
 var arrToTree = function(arr) {
-const idMap = new Map();
+  const idMap = new Map();
   let root = null;
 
   // 添加 children 字段并建立 id → node 的映射
